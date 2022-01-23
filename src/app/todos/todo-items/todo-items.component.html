@@ -1,0 +1,29 @@
+<table [dataSource]="dataSource" class="mat-elevation-z8" mat-table>
+
+  <!-- Id Column -->
+  <ng-container matColumnDef="id">
+    <th *matHeaderCellDef mat-header-cell> Id</th>
+    <td *matCellDef="let element" mat-cell> {{element.id}} </td>
+  </ng-container>
+
+  <!-- Title Column -->
+  <ng-container matColumnDef="title">
+    <th *matHeaderCellDef mat-header-cell> Title</th>
+    <td *matCellDef="let element" mat-cell> {{element.title}} </td>
+  </ng-container>
+
+  <!-- Due on Column -->
+  <ng-container matColumnDef="due_on">
+    <th *matHeaderCellDef mat-header-cell> Due on</th>
+    <td *matCellDef="let element" mat-cell> {{element.due_on | date:'dd/MM/yyyy HH:mm'}} </td>
+  </ng-container>
+
+  <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+  <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+</table>
+
+<mat-paginator (page)="onPaginatorChange($event)"
+               [length]="paginatorData.total"
+               [pageSize]="paginatorData.limit"
+               aria-label="Select page">
+</mat-paginator>

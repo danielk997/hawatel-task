@@ -1,0 +1,29 @@
+<table [dataSource]="dataSource" class="mat-elevation-z8" mat-table>
+
+  <!-- Id Column -->
+  <ng-container matColumnDef="id">
+    <th *matHeaderCellDef mat-header-cell> Id</th>
+    <td *matCellDef="let element" mat-cell> {{element.id}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th *matHeaderCellDef mat-header-cell> Name</th>
+    <td *matCellDef="let element" mat-cell> {{element.name}} </td>
+  </ng-container>
+
+  <!-- Email Column -->
+  <ng-container matColumnDef="email">
+    <th *matHeaderCellDef mat-header-cell> E-mail</th>
+    <td *matCellDef="let element" mat-cell> {{element.email}} </td>
+  </ng-container>
+
+  <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+  <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+</table>
+
+<mat-paginator (page)="onPaginatorChange($event)"
+               [length]="paginatorData.total"
+               [pageSize]="paginatorData.limit"
+               aria-label="Select page">
+</mat-paginator>
