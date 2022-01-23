@@ -8,6 +8,7 @@ import {SharedModule} from "./shared/shared.module";
 import {TodosModule} from "./todos/todos.module";
 import {HttpClientModule} from "@angular/common/http";
 import {RouterModule} from "@angular/router";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {RouterModule} from "@angular/router";
     SharedModule,
     TodosModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

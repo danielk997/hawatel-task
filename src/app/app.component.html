@@ -1,2 +1,6 @@
 <app-navbar></app-navbar>
-<router-outlet></router-outlet>
+<div *ngIf="preLoader" class="preloader">
+  <mat-spinner></mat-spinner>
+</div>
+<router-outlet (activate)="onActivate($event)"></router-outlet>
+

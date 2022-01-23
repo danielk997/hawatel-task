@@ -6,6 +6,7 @@ import {PostsComponent} from "./todos/posts/posts.component";
 import {SinglePostComponent} from "./todos/posts/single-post/single-post.component";
 
 const routes: Routes = [
+  {path: '', component: PostsComponent},
   {path: 'users', component: UsersComponent},
   {path: 'todos', component: TodoItemsComponent},
   {path: 'posts', component: PostsComponent},
