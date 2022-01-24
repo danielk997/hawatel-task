@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {ApiService} from "../api.service";
-import {TodoItem} from "../todo-items/todo-item.model";
 import {Post} from "./post.model";
 
 @Component({

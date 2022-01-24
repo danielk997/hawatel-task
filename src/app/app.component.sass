@@ -1,8 +1,8 @@
-table
-  width: 100%
+*
+  font-family: Calibri, serif
 
 .preloader
-  width: 100%
+  width: 90%
   height: calc(100% - 50px)
   top: 70px
   position: absolute
@@ -10,3 +10,15 @@ table
   display: flex
   justify-content: center
   align-items: center
+  z-index: 99
+
+.wrapper
+  padding: 0 5%
+  display: flex
+  justify-content: center
+  align-content: center
+
+  *[class*='app']
+    width: 100%
+
+$small-screen: 768px

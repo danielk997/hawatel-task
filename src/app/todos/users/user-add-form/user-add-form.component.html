@@ -1,0 +1,24 @@
+<form action="">
+  <mat-form-field appearance="fill">
+    <mat-label>Name</mat-label>
+    <input [formControl]="userName" matInput>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>E-mail</mat-label>
+    <input [formControl]="email" type="email" matInput>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Gender</mat-label>
+    <mat-select [formControl]="gender">
+      <mat-option value="male">Male</mat-option>
+      <mat-option value="female">Female</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="onClick($event)">Add user</button>
+  <p class="error" *ngIf="error">
+    {{errorMessage}}
+  </p>
+  <p *ngIf="error === false">
+    User has been added
+  </p>
+</form>
