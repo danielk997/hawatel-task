@@ -13,6 +13,8 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {MatSelectModule} from "@angular/material/select";
+import { TodoAddFormComponent } from './todo-items/todo-add-form/todo-add-form.component';
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import {MatSelectModule} from "@angular/material/select";
     TodoItemsComponent,
     PostsComponent,
     SinglePostComponent,
-    UserAddFormComponent
+    UserAddFormComponent,
+    TodoAddFormComponent
   ],
   exports: [
     UsersComponent
@@ -34,7 +37,8 @@ import {MatSelectModule} from "@angular/material/select";
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatSelectModule
+    MatSelectModule,
+    MatAutocompleteModule
   ]
 })
 export class TodosModule {

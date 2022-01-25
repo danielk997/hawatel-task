@@ -1,0 +1,22 @@
+<form action="">
+  <mat-form-field appearance="fill">
+    <mat-label>Title</mat-label>
+    <input [formControl]="titleControl" matInput>
+  </mat-form-field>
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Assignee</mat-label>
+    <input type="text" matInput [formControl]="userControl" [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+        {{option.name}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="onClick($event)">Add user</button>
+  <p class="error" *ngIf="error">
+    {{errorMessage}}
+  </p>
+  <p *ngIf="error === false">
+    Todo item has been added
+  </p>
+</form>

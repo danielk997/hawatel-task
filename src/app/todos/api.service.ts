@@ -18,6 +18,10 @@ export class ApiService {
     return this.getItem('users', page);
   }
 
+  getUsersByName(page: number, name: string): Observable<ApiResponse> {
+    return this.getItem('users', page, `name=${name}`)
+  }
+
   getTodos(page: number): Observable<ApiResponse> {
     return this.getItem('todos', page);
   }
@@ -31,16 +35,11 @@ export class ApiService {
   }
 
   addUser(body: Object = {}): Observable<any> {
-    return this.http.post(
-      `${environment.apiUrl}users`,
-      JSON.stringify(body),
-      {
-        headers: {
-          'Authorization': `Bearer ${this.apiToken}`,
-          'Content-Type': 'application/json'
-        }
-      }
-    ).pipe(catchError(this.formatErrors));
+    return this.post(body, 'users')
+  }
+
+  addTodo(body: Object = {}): Observable<any> {
+    return this.post(body, 'todos')
   }
 
   private getItem(item: string, page: number, params?: string): Observable<any> {
@@ -49,5 +48,18 @@ export class ApiService {
 
   private formatErrors(error: any) {
     return throwError(error.error);
+  }
+
+  private post(body: Object = {}, path: string): Observable<any> {
+    return this.http.post(
+      `${environment.apiUrl}${path}`,
+      JSON.stringify(body),
+      {
+        headers: {
+          'Authorization': `Bearer ${this.apiToken}`,
+          'Content-Type': 'application/json'
+        }
+      }
+    ).pipe(catchError(this.formatErrors));
   }
 }
