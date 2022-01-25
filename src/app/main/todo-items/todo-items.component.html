@@ -1,4 +1,4 @@
-<table [dataSource]="dataSource" class="mat-elevation-z8" mat-table>
+<table [dataSource]="dataSource$" class="mat-elevation-z8" mat-table>
 
   <!-- Id Column -->
   <ng-container matColumnDef="id">
@@ -25,5 +25,6 @@
 <mat-paginator (page)="onPaginatorChange($event)"
                [length]="paginatorData.total"
                [pageSize]="paginatorData.limit"
+               [pageIndex]="paginatorData.page - 1"
                aria-label="Select page">
 </mat-paginator>

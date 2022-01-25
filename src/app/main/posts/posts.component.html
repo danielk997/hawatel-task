@@ -1,0 +1,11 @@
+<article *ngFor="let post of dataSource$ | async">
+  <h2>{{post?.title}}</h2>
+<!--  <p>{{post?.body}}</p>-->
+  <a [routerLink]="['/posts', post?.id]">See comments</a>
+</article>
+<mat-paginator (page)="onPaginatorChange($event)"
+               [length]="paginatorData.total"
+               [pageSize]="paginatorData.limit"
+               [pageIndex]="paginatorData.page - 1"
+               aria-label="Select page">
+</mat-paginator>
