@@ -1,6 +1,5 @@
 import {createReducer, on} from '@ngrx/store';
 import {Pagination} from "../../main/api-response.model";
-import {TodoItem} from "../../main/todo-items/todo-item.model";
 import {User} from "../../main/users/user.model";
 import {changedPagination, initUsersPagination, retrievedUsersList} from "./users.actions";
 

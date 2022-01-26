@@ -25,6 +25,8 @@ export class SinglePostComponent implements OnInit {
       const postId = this.postIdFromUrlArray(it);
       this.api.getPostComments(1, postId)
         .subscribe(res => this.comments = res.data)
+
+      this.api.getPostById(postId).subscribe(it => this.post = it.data[0] as Post)
     })
   }
 

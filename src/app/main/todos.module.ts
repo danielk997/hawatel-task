@@ -5,15 +5,15 @@ import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {TodoItemsComponent} from './todo-items/todo-items.component';
 import {PostsComponent} from './posts/posts.component';
-import { SinglePostComponent } from './posts/single-post/single-post.component';
+import {SinglePostComponent} from './posts/single-post/single-post.component';
 import {RouterModule} from "@angular/router";
-import { UserAddFormComponent } from './users/user-add-form/user-add-form.component';
+import {UserAddFormComponent} from './users/user-add-form/user-add-form.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {MatSelectModule} from "@angular/material/select";
-import { TodoAddFormComponent } from './todo-items/todo-add-form/todo-add-form.component';
+import {TodoAddFormComponent} from './todo-items/todo-add-form/todo-add-form.component';
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
 
 @NgModule({

@@ -1,7 +1,9 @@
-<h1>Single</h1>
-
+<h1>{{post?.title}}</h1>
+<p>{{post?.body}}</p>
+<h2 *ngIf="comments.length > 0">Comments:</h2>
 <div *ngFor="let comment of comments">
-  <p>{{comment.name}}</p>
-  <p>{{comment.email}}</p>
+  <p><b>User: </b>{{comment.name}}</p>
+  <p><b>E-mail: </b>{{comment.email}}</p>
+  <p><b>Comment:</b></p>
   <p>{{comment.body}}</p>
 </div>

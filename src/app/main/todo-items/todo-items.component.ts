@@ -3,7 +3,7 @@ import {PageEvent} from "@angular/material/paginator";
 import {ApiResponse, Pagination} from "../api-response.model";
 import {ApiService} from "../api.service";
 import {Store} from "@ngrx/store";
-import {selectTodosPagination, selectTodos} from "../../state/todos/todos.selectors";
+import {selectTodos, selectTodosPagination} from "../../state/todos/todos.selectors";
 import {todosInit} from "../../state/todos/todos.reducer";
 import {TodoItem} from "./todo-item.model";
 import {changedPagination, initTodosPagination, retrievedTodosList} from "../../state/todos/todos.actions";

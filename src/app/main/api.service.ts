@@ -30,6 +30,10 @@ export class ApiService {
     return this.getItem('posts', page);
   }
 
+  getPostById(id: number): Observable<ApiResponse> {
+    return this.getItem('posts', 1, `id=${id}`)
+  }
+
   getPostComments(page: number, postId: number) {
     return this.getItem('comments', page, `post_id=${postId}`)
   }
