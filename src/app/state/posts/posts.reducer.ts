@@ -3,8 +3,6 @@ import {loadPosts, loadPostsFailure, loadPostsSuccess, updatePosts} from "./post
 import {Post} from "../../main/posts/post.model";
 import {Pagination} from "../../main/api-response.model";
 
-export let postsInit: boolean = false
-
 export interface PostState {
   posts: Post[];
   status: 'pending' | 'loading' | 'error' | 'success';

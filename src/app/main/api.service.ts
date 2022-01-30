@@ -14,20 +14,8 @@ export class ApiService {
   constructor(private http: HttpClient) {
   }
 
-  getUsers(page: number): Observable<ApiResponse> {
-    return this.getItem('users', page);
-  }
-
-  getUsersByName(page: number, name: string): Observable<ApiResponse> {
-    return this.getItem('users', page, `name=${name}`)
-  }
-
   getTodos(page: number): Observable<ApiResponse> {
     return this.getItem('todos', page);
-  }
-
-  addUser(body: Object = {}): Observable<any> {
-    return this.post(body, 'users')
   }
 
   addTodo(body: Object = {}): Observable<any> {
@@ -38,11 +26,7 @@ export class ApiService {
     return this.http.get<any>(`${environment.apiUrl}/${item}?page=${page}${params ? '&' + params : ''}`)
   }
 
-  private formatErrors(error: any) {
-    return throwError(error.error);
-  }
-
-  private post(body: Object = {}, path: string): Observable<any> {
+  post(body: Object = {}, path: string): Observable<any> {
     return this.http.post(
       `${environment.apiUrl}${path}`,
       JSON.stringify(body),
@@ -53,5 +37,9 @@ export class ApiService {
         }
       }
     ).pipe(catchError(this.formatErrors));
+  }
+
+  private formatErrors(error: any) {
+    return throwError(error.error);
   }
 }

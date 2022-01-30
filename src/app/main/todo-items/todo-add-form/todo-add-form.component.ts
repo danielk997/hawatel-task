@@ -3,6 +3,7 @@ import {FormControl, Validators} from "@angular/forms";
 import {ApiService} from "../../api.service";
 import {User} from "../../users/user.model";
 import {map, Observable, startWith} from "rxjs";
+import {UserService} from "../../users/user.service";
 
 @Component({
   selector: 'app-todo-add-form',
@@ -18,7 +19,10 @@ export class TodoAddFormComponent implements OnInit {
   filteredOptions: Observable<User[]> | undefined
   options: User[] = [];
 
-  constructor(private api: ApiService) {
+  constructor(
+    private api: ApiService,
+    private userService: UserService
+  ) {
   }
 
   ngOnInit(): void {
@@ -80,7 +84,7 @@ export class TodoAddFormComponent implements OnInit {
   }
 
   private updateOptionsWithApiValues(userName: string) {
-    this.api.getUsersByName(1, userName)
-      .subscribe(it => this.options = it.data as User[])
+    this.userService.getByName(1, userName)
+      .subscribe(it => this.options = it)
   }
 }

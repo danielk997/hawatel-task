@@ -6,7 +6,7 @@ import {catchError, from, map, of, switchMap, tap} from "rxjs";
 import {PostService} from "../../main/posts/post.service";
 
 @Injectable()
-export class PostEffects {
+export class PostsEffects {
 
   constructor(
     private actions$: Actions,

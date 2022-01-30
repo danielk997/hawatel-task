@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, Validators} from "@angular/forms";
-import {ApiService} from "../../api.service";
+import {UserService} from "../user.service";
 
 @Component({
   selector: 'app-user-add-form',
@@ -15,7 +15,7 @@ export class UserAddFormComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.email])
   gender = new FormControl('', [Validators.required])
 
-  constructor(private api: ApiService) {
+  constructor(private userService: UserService) {
   }
 
   ngOnInit(): void {
@@ -29,7 +29,7 @@ export class UserAddFormComponent implements OnInit {
       return;
     }
 
-    this.api.addUser(
+    this.userService.add(
       {
         email: this.email.value,
         gender: this.gender.value,

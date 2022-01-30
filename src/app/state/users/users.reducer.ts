@@ -1,23 +1,29 @@
 import {createReducer, on} from '@ngrx/store';
 import {Pagination} from "../../main/api-response.model";
 import {User} from "../../main/users/user.model";
-import {changedPagination, initUsersPagination, retrievedUsersList} from "./users.actions";
+import {loadUsers, loadUsersFailure, loadUsersSuccess, updateUsers} from "./users.actions";
 
-export const initialState: ReadonlyArray<User> = [];
-export let usersInit: boolean = false
+export interface UserState {
+  users: User[];
+  status: 'pending' | 'loading' | 'error' | 'success';
+  pagination: Pagination;
+}
+
+export const initialState: UserState = {
+  users: [],
+  status: 'pending',
+  pagination: {page: 0, pages: 0, limit: 0, total: 0}
+}
 
 export const usersReducer = createReducer(
   initialState,
-  on(retrievedUsersList, (state, {users}) => {
-    usersInit = true;
-    return users
-  })
+  on(loadUsers, (state) => ({...state, status: "loading"})),
+  on(loadUsersSuccess, (state, {users, pagination}) => ({
+    ...state,
+    users: users,
+    status: "success",
+    pagination: pagination
+  })),
+  on(updateUsers, (state, {pagination}) => ({...state, pagination: pagination})),
+  on(loadUsersFailure, (state) => ({...state, status: "error"})),
 );
-
-export const initialUsersPagination: Pagination = {page: 0, pages: 0, limit: 0, total: 0}
-
-export const userPaginationReducer = createReducer(
-  initialUsersPagination,
-  on(changedPagination, (state, {usersPagination}) => usersPagination),
-  on(initUsersPagination, (state, {usersPagination}) => usersPagination),
-)
