@@ -26,18 +26,6 @@ export class ApiService {
     return this.getItem('todos', page);
   }
 
-  getPosts(page: number): Observable<ApiResponse> {
-    return this.getItem('posts', page);
-  }
-
-  getPostById(id: number): Observable<ApiResponse> {
-    return this.getItem('posts', 1, `id=${id}`)
-  }
-
-  getPostComments(page: number, postId: number) {
-    return this.getItem('comments', page, `post_id=${postId}`)
-  }
-
   addUser(body: Object = {}): Observable<any> {
     return this.post(body, 'users')
   }
@@ -46,7 +34,7 @@ export class ApiService {
     return this.post(body, 'todos')
   }
 
-  private getItem(item: string, page: number, params?: string): Observable<any> {
+  getItem(item: string, page: number, params?: string): Observable<any> {
     return this.http.get<any>(`${environment.apiUrl}/${item}?page=${page}${params ? '&' + params : ''}`)
   }
 

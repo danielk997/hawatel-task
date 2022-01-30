@@ -3,6 +3,7 @@ import {Post} from "../post.model";
 import {Comment} from "../comment.model";
 import {ApiService} from "../../api.service";
 import {ActivatedRoute} from "@angular/router";
+import {PostService} from "../post.service";
 
 @Component({
   selector: 'app-single-post',
@@ -16,17 +17,16 @@ export class SinglePostComponent implements OnInit {
 
   constructor(
     private api: ApiService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private postService: PostService
   ) {
   }
 
   ngOnInit(): void {
     this.route.url.subscribe(it => {
       const postId = this.postIdFromUrlArray(it);
-      this.api.getPostComments(1, postId)
-        .subscribe(res => this.comments = res.data)
-
-      this.api.getPostById(postId).subscribe(it => this.post = it.data[0] as Post)
+      this.postService.getComments(postId).subscribe(it => this.comments = it)
+      this.postService.getById(postId).subscribe(it => this.post = it)
     })
   }
 
