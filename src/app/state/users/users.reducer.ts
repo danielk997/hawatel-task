@@ -1,5 +1,5 @@
 import {createReducer, on} from '@ngrx/store';
-import {Pagination} from "../../main/api-response.model";
+import {Pagination} from "../../main/pagination";
 import {User} from "../../main/users/user.model";
 import {loadUsers, loadUsersFailure, loadUsersSuccess, updateUsers} from "./users.actions";
 

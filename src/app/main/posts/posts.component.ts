@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {ApiService} from "../api.service";
 import {Store} from "@ngrx/store";
-import {Pagination} from "../api-response.model";
+import {Pagination} from "../pagination";
 import {PageEvent} from "@angular/material/paginator";
 import {selectAllPosts, selectPostsPagination} from "../../state/posts/posts.selectors";
 import {loadPosts, updatePosts} from "../../state/posts/posts.actions";
@@ -17,10 +16,7 @@ export class PostsComponent implements OnInit {
   paginatorData: Pagination = {total: 0, pages: 0, page: 0, limit: 0}
   paginatorData$ = this.store.select(selectPostsPagination)
 
-  constructor(
-    private api: ApiService,
-    private store: Store<any>,
-  ) {
+  constructor(private store: Store<any>,) {
   }
 
   ngOnInit(): void {

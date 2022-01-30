@@ -1,7 +1,13 @@
-import {createFeatureSelector} from '@ngrx/store';
-import {Pagination} from "../../main/api-response.model";
-import {TodoItem} from "../../main/todo-items/todo-item.model";
+import {createSelector} from '@ngrx/store';
+import {AppState} from "../app.state";
+import {TodoState} from "./todos.reducer";
 
-export const selectTodos = createFeatureSelector<ReadonlyArray<TodoItem>>('todos');
-
-export const selectTodosPagination = createFeatureSelector<Pagination>('todosPagination');
+export const selectTodos = (state: AppState) => state.todos;
+export const selectAllTodos = createSelector(
+  selectTodos,
+  (state: TodoState) => state.todos
+);
+export const selectTodosPagination = createSelector(
+  selectTodos,
+  (state: TodoState) => state.pagination
+)

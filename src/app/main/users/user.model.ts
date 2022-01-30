@@ -1,4 +1,4 @@
-import {Pagination} from "../api-response.model";
+import {Pagination} from "../pagination";
 
 export interface User {
   id: number

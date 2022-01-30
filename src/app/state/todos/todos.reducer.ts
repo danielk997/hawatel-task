@@ -1,23 +1,29 @@
 import {createReducer, on} from '@ngrx/store';
-import {Pagination} from "../../main/api-response.model";
+import {Pagination} from "../../main/pagination";
 import {TodoItem} from "../../main/todo-items/todo-item.model";
-import {changedPagination, initTodosPagination, retrievedTodosList} from "./todos.actions";
+import {loadTodos, loadTodosFailure, loadTodosSuccess, updateTodos} from "./todos.actions";
 
-export const initialState: ReadonlyArray<TodoItem> = [];
-export let todosInit: boolean = false
+export interface TodoState {
+  todos: TodoItem[];
+  status: 'pending' | 'loading' | 'error' | 'success';
+  pagination: Pagination;
+}
+
+export const initialState: TodoState = {
+  todos: [],
+  status: 'pending',
+  pagination: {page: 0, pages: 0, limit: 0, total: 0}
+}
 
 export const todosReducer = createReducer(
   initialState,
-  on(retrievedTodosList, (state, {todos}) => {
-    todosInit = true;
-    return todos
-  })
+  on(loadTodos, (state) => ({...state, status: "loading"})),
+  on(loadTodosSuccess, (state, {todos, pagination}) => ({
+    ...state,
+    todos: todos,
+    status: "success",
+    pagination: pagination
+  })),
+  on(updateTodos, (state, {pagination}) => ({...state, pagination: pagination})),
+  on(loadTodosFailure, (state) => ({...state, status: "error"})),
 );
-
-export const initialTodosPagination: Pagination = {page: 0, pages: 0, limit: 0, total: 0}
-
-export const todoPaginationReducer = createReducer(
-  initialTodosPagination,
-  on(changedPagination, (state, {todosPagination}) => todosPagination),
-  on(initTodosPagination, (state, {todosPagination}) => todosPagination),
-)

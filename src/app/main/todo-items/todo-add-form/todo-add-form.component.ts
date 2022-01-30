@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, Validators} from "@angular/forms";
-import {ApiService} from "../../api.service";
 import {User} from "../../users/user.model";
 import {map, Observable, startWith} from "rxjs";
 import {UserService} from "../../users/user.service";
+import {TodoService} from "../todo.service";
 
 @Component({
   selector: 'app-todo-add-form',
@@ -20,7 +20,7 @@ export class TodoAddFormComponent implements OnInit {
   options: User[] = [];
 
   constructor(
-    private api: ApiService,
+    private todoService: TodoService,
     private userService: UserService
   ) {
   }
@@ -47,7 +47,7 @@ export class TodoAddFormComponent implements OnInit {
       return;
     }
 
-    this.api.addTodo(
+    this.todoService.add(
       {
         user: this.userControl.value.name,
         user_id: this.userControl.value.id,

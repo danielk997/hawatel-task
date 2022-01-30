@@ -1,6 +1,6 @@
 import {createAction, props} from '@ngrx/store';
 import {User} from "../../main/users/user.model";
-import {Pagination} from "../../main/api-response.model";
+import {Pagination} from "../../main/pagination";
 
 export const loadUsers = createAction(
   '[Users List/API] Load Users',

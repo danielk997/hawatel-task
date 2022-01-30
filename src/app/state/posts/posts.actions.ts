@@ -1,6 +1,6 @@
 import {createAction, props} from '@ngrx/store';
 import {Post} from "../../main/posts/post.model";
-import {Pagination} from "../../main/api-response.model";
+import {Pagination} from "../../main/pagination";
 
 export const loadPosts = createAction(
   '[Posts List/API] Load Posts',

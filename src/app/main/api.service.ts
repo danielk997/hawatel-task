@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {catchError, Observable, throwError} from "rxjs";
 import {environment} from "../../environments/environment";
-import {ApiResponse} from "./api-response.model";
 
 @Injectable({
   providedIn: 'root'
@@ -12,14 +11,6 @@ export class ApiService {
   private apiToken: string = '06c0ff214ed9f71b1fe0c94642f782305c9e47dd057ae0710e1a7c1231714205';
 
   constructor(private http: HttpClient) {
-  }
-
-  getTodos(page: number): Observable<ApiResponse> {
-    return this.getItem('todos', page);
-  }
-
-  addTodo(body: Object = {}): Observable<any> {
-    return this.post(body, 'todos')
   }
 
   getItem(item: string, page: number, params?: string): Observable<any> {

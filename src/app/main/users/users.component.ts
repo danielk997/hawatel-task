@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {PageEvent} from "@angular/material/paginator";
-import {ApiService} from "../api.service";
-import {Pagination} from "../api-response.model";
+import {Pagination} from "../pagination";
 import {Store} from "@ngrx/store";
 import {selectAllUsers, selectUsersPagination} from "../../state/users/users.selectors";
 import {loadUsers, updateUsers} from "../../state/users/users.actions";
@@ -18,10 +17,7 @@ export class UsersComponent implements OnInit {
   dataSource$ = this.store.select(selectAllUsers);
   displayedColumns = ['id', 'name', 'email'];
 
-  constructor(
-    private api: ApiService,
-    private store: Store<any>
-  ) {
+  constructor(private store: Store<any>) {
   }
 
   ngOnInit(): void {

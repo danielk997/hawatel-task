@@ -1,7 +1,7 @@
 import {createReducer, on} from '@ngrx/store';
 import {loadPosts, loadPostsFailure, loadPostsSuccess, updatePosts} from "./posts.actions";
 import {Post} from "../../main/posts/post.model";
-import {Pagination} from "../../main/api-response.model";
+import {Pagination} from "../../main/pagination";
 
 export interface PostState {
   posts: Post[];

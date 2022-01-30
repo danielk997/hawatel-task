@@ -1,26 +1,3 @@
-<!--<table [dataSource]="dataSource$" class="mat-elevation-z8" mat-table>-->
-
-<!--  &lt;!&ndash; Id Column &ndash;&gt;-->
-<!--  <ng-container matColumnDef="id">-->
-<!--    <th *matHeaderCellDef mat-header-cell> Id</th>-->
-<!--    <td *matCellDef="let element" mat-cell> {{element.id}} </td>-->
-<!--  </ng-container>-->
-
-<!--  &lt;!&ndash; Title Column &ndash;&gt;-->
-<!--  <ng-container matColumnDef="title">-->
-<!--    <th *matHeaderCellDef mat-header-cell> Title</th>-->
-<!--    <td *matCellDef="let element" mat-cell> {{element.title}} </td>-->
-<!--  </ng-container>-->
-
-<!--  &lt;!&ndash; Due on Column &ndash;&gt;-->
-<!--  <ng-container matColumnDef="due_on">-->
-<!--    <th *matHeaderCellDef mat-header-cell> Due on</th>-->
-<!--    <td *matCellDef="let element" mat-cell> {{element.due_on | date:'dd/MM/yyyy HH:mm'}} </td>-->
-<!--  </ng-container>-->
-
-<!--  <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>-->
-<!--  <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>-->
-<!--</table>-->
 <div *ngFor="let element of dataSource$ | async">
   <h3>{{element.title}}</h3>
   <p>Due on: {{element.due_on | date:'dd/MM/yyyy HH:mm'}}</p>

@@ -11,11 +11,12 @@ import {RouterModule} from "@angular/router";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {StoreModule} from "@ngrx/store";
 import {postsReducer} from "./state/posts/posts.reducer";
-import {todoPaginationReducer, todosReducer} from "./state/todos/todos.reducer";
+import {todosReducer} from "./state/todos/todos.reducer";
 import {usersReducer} from "./state/users/users.reducer";
 import {EffectsModule} from "@ngrx/effects";
 import {UsersEffects} from "./state/users/users.effects";
 import {PostsEffects} from "./state/posts/posts.effects";
+import {TodosEffects} from "./state/todos/todos.effects";
 
 @NgModule({
   declarations: [
@@ -33,10 +34,9 @@ import {PostsEffects} from "./state/posts/posts.effects";
     StoreModule.forRoot({
       posts: postsReducer,
       todos: todosReducer,
-      todosPagination: todoPaginationReducer,
       users: usersReducer,
     }),
-    EffectsModule.forRoot([PostsEffects, UsersEffects])
+    EffectsModule.forRoot([PostsEffects, UsersEffects, TodosEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]

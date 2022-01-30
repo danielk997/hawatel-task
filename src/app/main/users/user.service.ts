@@ -23,7 +23,7 @@ export class UserService {
     )
   }
 
-  add(body: Object = {}) {
+  add(body: Object = {}): Observable<any> {
     return this.api.post(body, 'users')
   }
 }
